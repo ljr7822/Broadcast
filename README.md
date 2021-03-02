@@ -107,3 +107,17 @@ this.registerReceiver(new BroadcastReceiver(),intentFilter);
 ```
 
 ##### 通过广播接收者显示电池电量
+```java
+/**
+ * 创建一个广播接收器
+ */
+private class BroadcastReceiver extends android.content.BroadcastReceiver{
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+         String action = intent.getAction();
+         Log.d(TAG,"收到电量变化的广播 --- "+action);
+         Log.d(TAG,"当前电量 --- "+intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0));
+    }
+}
+```

@@ -6,8 +6,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.net.URISyntaxException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             Log.d(TAG,"收到电量变化的广播 --- "+action);
+            Log.d(TAG,"当前电量 --- "+intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0));
         }
     }
 }
