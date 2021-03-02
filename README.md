@@ -84,4 +84,26 @@ Android 为应用提供三种方式来发送广播：
 
 ##### 监听电量变化
 
+```java
+/**
+ * 创建一个广播接收器
+ */
+private class BroadcastReceiver extends android.content.BroadcastReceiver{
+   @Override
+   public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        Log.d(TAG,"收到电量变化的广播 --- "+action);
+   }
+}
+```
+
+```java
+// 初始化频道
+IntentFilter intentFilter = new IntentFilter();
+// 添加我们要监听的频道
+intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
+// 注册广播
+this.registerReceiver(new BroadcastReceiver(),intentFilter);
+```
+
 ##### 通过广播接收者显示电池电量

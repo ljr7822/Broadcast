@@ -18,10 +18,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 初始化频道
         IntentFilter intentFilter = new IntentFilter();
+        // 添加我们要监听的频道
         intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
-        BroadcastReceiver broadcastReceiver = new BroadcastReceiver();
-        this.registerReceiver(broadcastReceiver,intentFilter);
+        // 注册广播
+        this.registerReceiver(new BroadcastReceiver(),intentFilter);
     }
 
     /**
